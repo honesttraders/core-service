@@ -1,6 +1,6 @@
 <?php
 
-namespace SpondonIt\Service\Requests;
+namespace HonestTraders\CoreService\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

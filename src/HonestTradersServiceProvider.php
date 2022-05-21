@@ -34,9 +34,9 @@ class HonestTradersServiceProvider extends ServiceProvider
         $this->loadViewsFrom(resource_path('/views/vendors/service'), 'service');
 
         $this->publishes([
-            __DIR__.'/../public' => public_path('vendor/spondonit'),
+            __DIR__.'/../public' => public_path('vendor/honesttraders'),
              __DIR__.'/../resources/views' => resource_path('views/vendors/service'),
-        ], 'spondonit');
+        ], 'honesttraders');
 
         $this->commands([
             MigrateStatusCommand::class,

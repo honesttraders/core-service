@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use SpondonIt\Service\Repositories\InitRepository;
-use SpondonIt\Service\Repositories\InstallRepository;
+use HonestTraders\CoreService\Repositories\InitRepository;
+use HonestTraders\CoreService\Repositories\InstallRepository;
 
 if (!function_exists('isTestMode')) {
     function isTestMode()
