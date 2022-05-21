@@ -1,6 +1,6 @@
 # Honest Traders Ltd IT Core Service
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/spondonit/service.svg?style=flat-square)](https://packagist.org/packages/spondonit/service)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/honesttraders/core-service.svg?style=flat-square)](https://packagist.org/packages/honesttraders/core-service)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 
