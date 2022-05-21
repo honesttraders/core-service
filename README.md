@@ -6,9 +6,9 @@
 
 
 [![GitHub issues](https://img.shields.io/github/issues/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/issues/honesttraders/core-service)
-[![GitHub forks](https://img.shields.io/github/issues/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/forks/honesttraders/core-service)
-[![GitHub stars](https://img.shields.io/github/issues/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/stars/honesttraders/core-service)
-[![GitHub license](https://img.shields.io/github/issues/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/license/honesttraders/core-service)
+[![GitHub forks](https://img.shields.io/github/forks/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/forks/honesttraders/core-service)
+[![GitHub stars](https://img.shields.io/github/stars/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/stars/honesttraders/core-service)
+[![GitHub license](https://img.shields.io/github/license/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/license/honesttraders/core-service)
 
 
 | **Laravel**  |  **service** |
