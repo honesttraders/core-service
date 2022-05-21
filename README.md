@@ -3,6 +3,11 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spondonit/service.svg?style=flat-square)](https://packagist.org/packages/spondonit/service)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
+
+
+[![GitHub issues](https://img.shields.io/github/issues/honesttraders/core-service.svg?style=flat-square)](https://img.shields.io/github/issues/honesttraders/core-service)
+
+
 | **Laravel**  |  **service** |
 |---|---|
 | 7.0  | ^1.0 |
