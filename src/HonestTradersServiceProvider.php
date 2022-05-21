@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use SpondonIt\Service\Console\Commands\MigrateStatusCommand;
 use SpondonIt\Service\Middleware\ServiceMiddleware;
 
-class SpondonItServiceProvider extends ServiceProvider
+class HonestTradersServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
