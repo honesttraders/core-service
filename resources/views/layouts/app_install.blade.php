@@ -3,13 +3,23 @@
 
 <head>
     @php
-        $base_path = 'public/vendor/spondonit';
+        $base_path = 'public/vendor/honesttraders';
     @endphp
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ isset($title) ? $title .' | '. config('app.name') :  config('app.name') }}</title>
+
+    <style>
+        :root{
+            --background_color: #EEF6FF;
+            --header_background_color: #2B8ABE;
+            --gradiant_color1: #2b8abe;
+            --gradiant_color2: #303895;
+            --gradiant_color3: #594e93;
+        }
+    </style>
     <link rel="shortcut icon" href="{{ asset($base_path . '/img/favicon.png') }}"/>
 
     <link rel="stylesheet" href="{{ asset($base_path . '/css/bootstrap.min.css') }}">

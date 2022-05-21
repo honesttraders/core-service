@@ -107,7 +107,14 @@
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: rebeccapurple -webkit-linear-gradient(90deg, #7c32ff 0%, #c738d8 100%, #7c32ff 100%);
+    background: rebeccapurple -webkit-linear-gradient(90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+
+    /* background: -webkit-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: -moz-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: -o-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: -ms-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: linear-gradient(90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%); */
+
     color: white;
     transition: all 0.4s ease 0s;
     background-size: 200% auto;
@@ -250,7 +257,8 @@ body.admin {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     color: #828bb2;
-    background: url(../img/body-bg.jpg) no-repeat center;
+    background-color: var(--background_color);
+    /* background: url(../img/body-bg.jpg) no-repeat center; */
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
@@ -281,7 +289,8 @@ label {
 
 
 .single-report-admit .card-header {
-    background: url(../img/report-admit-bg.png) no-repeat center;
+    /* background: url(../img/report-admit-bg.png) no-repeat center; */
+    background-color: var(--header_background_color);
     background-size: cover;
     border-radius: 5px 5px 0px 0px;
     border: 0;
@@ -321,11 +330,11 @@ label {
 }
 
 .primary-btn.fix-gr-bg {
-    background: -webkit-linear-gradient( 90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
-    background: -moz-linear-gradient( 90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
-    background: -o-linear-gradient( 90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
-    background: -ms-linear-gradient( 90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
-    background: linear-gradient(90deg, #7c32ff 0%, #c738d8 51%, #7c32ff 100%);
+    background: -webkit-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: -moz-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: -o-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: -ms-linear-gradient( 90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
+    background: linear-gradient(90deg, var(--gradiant_color1) 0%, var(--gradiant_color2) 51%, var(--gradiant_color3) 100%);
     color: #ffffff;
     background-size: 200% auto;
     -webkit-transition: all 0.4s ease 0s;
@@ -467,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary_checkbox input:checked ~ .checkmark {
-    background: linear-gradient(90deg, #7C32FF 0.47%, #C738D8 100%);
+    background: linear-gradient(90deg, var(--gradiant_color1) 0.47%, var(--gradiant_color2) 100%);
     box-shadow: 0px 5px 10px rgba(108, 39, 255, 0.25);
     transition: .3s;
 }
