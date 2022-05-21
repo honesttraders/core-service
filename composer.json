@@ -11,7 +11,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "HonestTraders\\Service\\": "src/"
+            "HonestTraders\\CoreService\\": "src/"
         },
         "files": ["helpers/helper.php"]
     },
