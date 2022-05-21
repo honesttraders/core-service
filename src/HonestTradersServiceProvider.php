@@ -3,8 +3,8 @@
 namespace HonestTraders\CoreService;
 
 use Illuminate\Support\ServiceProvider;
-use SpondonIt\Service\Console\Commands\MigrateStatusCommand;
-use SpondonIt\Service\Middleware\ServiceMiddleware;
+use HonestTraders\CoreService\Console\Commands\MigrateStatusCommand;
+use HonestTraders\CoreService\Middleware\ServiceMiddleware;
 
 class HonestTradersServiceProvider extends ServiceProvider
 {
