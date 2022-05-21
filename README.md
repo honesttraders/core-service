@@ -16,7 +16,7 @@
 
 ## Credits
 
-- [honesttraders](https://honesttradersltd.com)
+- [honesttraders](https://wwww.honesttradersltd.com)
 
 ## About honesttraders Ltd
 
