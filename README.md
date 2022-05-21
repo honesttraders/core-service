@@ -1,4 +1,4 @@
-# Spondon IT Service
+# Honest Traders Ltd IT Core Service
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spondonit/service.svg?style=flat-square)](https://packagist.org/packages/spondonit/service)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -7,7 +7,7 @@
 |---|---|
 | 7.0  | ^1.0 |
 
-`spondonit/service` is a Laravel package which manage your application installation and update system. This package is supported and tested in Laravel 7.
+`honesttraders/core-service` is a Laravel package which manage your application installation and update system. This package is supported and tested in Laravel 7. It is a core package of honesttraders.
 
 ## Requirements
 - [PHP >= 7.2](http://php.net/)
@@ -16,11 +16,11 @@
 
 ## Credits
 
-- [spondonit](https://spondonit.com)
+- [honesttraders](https://honesttradersltd.com)
 
-## About Spondon IT
+## About honesttraders Ltd
 
-Spondon IT is a web development company which is specialising on the Laravel framework.
+honesttraders Ltd. is a web development company which is specialising on the Laravel framework.  We are a team of dedicated and experienced Laravel developers who are passionate about building high quality Laravel applications.
 
 
 ## License
