@@ -1,6 +1,6 @@
 <?php
 
-namespace SpondonIt\Service\Console\Commands;;
+namespace HonestTraders\CoreService\Console\Commands;;
 
 use Illuminate\Database\Console\Migrations\BaseCommand;
 use Illuminate\Support\Collection;

@@ -1,11 +1,11 @@
 <?php
 
-namespace SpondonIt\Service\Controllers;
+namespace HonestTraders\CoreService\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use SpondonIt\Service\Repositories\LicenseRepository;
+use HonestTraders\CoreService\Repositories\LicenseRepository;
 use Toastr;
 
 class LicenseController extends Controller{

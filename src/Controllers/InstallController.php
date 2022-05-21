@@ -1,18 +1,18 @@
 <?php
 
-namespace SpondonIt\Service\Controllers;
+namespace HonestTraders\CoreService\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use SpondonIt\Service\Repositories\InitRepository;
-use SpondonIt\Service\Repositories\InstallRepository;
-use SpondonIt\Service\Requests\DatabaseRequest;
-use SpondonIt\Service\Requests\LicenseRequest;
-use SpondonIt\Service\Requests\UserRequest;
-use SpondonIt\Service\Requests\ModuleInstallRequest;
-use SpondonIt\Service\Requests\ThemeInstallRequest;
+use HonestTraders\CoreService\Repositories\InitRepository;
+use HonestTraders\CoreService\Repositories\InstallRepository;
+use HonestTraders\CoreService\Requests\DatabaseRequest;
+use HonestTraders\CoreService\Requests\LicenseRequest;
+use HonestTraders\CoreService\Requests\UserRequest;
+use HonestTraders\CoreService\Requests\ModuleInstallRequest;
+use HonestTraders\CoreService\Requests\ThemeInstallRequest;
 
 class InstallController extends Controller{
     protected $repo, $request, $init;

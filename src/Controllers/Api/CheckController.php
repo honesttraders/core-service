@@ -1,10 +1,10 @@
 <?php
 
-namespace SpondonIt\Service\Controllers\Api;
+namespace HonestTraders\CoreService\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use SpondonIt\Service\Repositories\InitRepository;
+use HonestTraders\CoreService\Repositories\InitRepository;
 
 class CheckController extends Controller{
 

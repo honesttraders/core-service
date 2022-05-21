@@ -1,10 +1,10 @@
 <?php
 
-namespace SpondonIt\Service\Middleware;
+namespace HonestTraders\CoreService\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use SpondonIt\Service\Repositories\InitRepository as ServiceRepository;
+use HonestTraders\CoreService\Repositories\InitRepository as ServiceRepository;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceMiddleware

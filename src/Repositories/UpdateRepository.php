@@ -1,6 +1,6 @@
 <?php
 
-namespace SpondonIt\Service\Repositories;
+namespace HonestTraders\CoreService\Repositories;
 ini_set('max_execution_time', 0);
 
 use Illuminate\Support\Facades\Artisan;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use SpondonIt\Service\Repositories\InitRepository;
+use HonestTraders\CoreService\Repositories\InitRepository;
 use Illuminate\Validation\ValidationException;
 use Throwable;
 

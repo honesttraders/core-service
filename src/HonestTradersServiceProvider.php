@@ -1,6 +1,6 @@
 <?php
 
-namespace SpondonIt\Service;
+namespace HonestTraders\CoreService;
 
 use Illuminate\Support\ServiceProvider;
 use SpondonIt\Service\Console\Commands\MigrateStatusCommand;

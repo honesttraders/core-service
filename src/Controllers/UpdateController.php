@@ -1,12 +1,12 @@
 <?php
 
-namespace SpondonIt\Service\Controllers;
+namespace HonestTraders\CoreService\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use SpondonIt\Service\Repositories\InitRepository;
-use SpondonIt\Service\Repositories\UpdateRepository;
+use HonestTraders\CoreService\Repositories\InitRepository;
+use HonestTraders\CoreService\Repositories\UpdateRepository;
 
 class UpdateController extends Controller
 {

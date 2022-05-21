@@ -1,6 +1,6 @@
 <?php
 
-namespace SpondonIt\Service\Repositories;
+namespace HonestTraders\CoreService\Repositories;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

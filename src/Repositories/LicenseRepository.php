@@ -1,6 +1,6 @@
 <?php
 
-namespace SpondonIt\Service\Repositories;
+namespace HonestTraders\CoreService\Repositories;
 ini_set('max_execution_time', -1);
 
 use Illuminate\Support\Facades\Artisan;
