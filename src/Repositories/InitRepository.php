@@ -68,7 +68,7 @@ class InitRepository {
             return false;
         }
         $ve = Storage::exists('.ve') ? Storage::get('.ve') : 'e';
-        $url = verifyUrl(config('spondonit.verifier', 'auth')) . '/api/cc?a=verify&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v.'&current='.urlencode(request()->path()).'&ve='.$ve;
+        $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=verify&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v.'&current='.urlencode(request()->path()).'&ve='.$ve;
         $response = curlIt($url);
 
 
@@ -104,7 +104,7 @@ class InitRepository {
             return false;
         }
         $ve = Storage::exists('.ve') ? Storage::get('.ve') : 'e';
-        $url = verifyUrl(config('spondonit.verifier', 'auth')) . '/api/cc?a=verify&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v.'&ve='.$ve;
+        $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=verify&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v.'&ve='.$ve;
         $response = curlIt($url);
 
         if($response){
@@ -130,11 +130,11 @@ class InitRepository {
         $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
         $v = Storage::exists('.version') ? Storage::get('.version') : null;
 
-        $about = file_get_contents(verifyUrl(config('spondonit.verifier', 'auth')) . '/about');
-        $update_tips = file_get_contents(verifyUrl(config('spondonit.verifier', 'auth')) . '/update-tips');
-        $support_tips = file_get_contents(verifyUrl(config('spondonit.verifier', 'auth')) . '/support-tips');
+        $about = file_get_contents(verifyUrl(config('honesttraders.verifier', 'auth')) . '/about');
+        $update_tips = file_get_contents(verifyUrl(config('honesttraders.verifier', 'auth')) . '/update-tips');
+        $support_tips = file_get_contents(verifyUrl(config('honesttraders.verifier', 'auth')) . '/support-tips');
 
-        $url = verifyUrl(config('spondonit.verifier', 'auth')) . '/api/cc?a=product&u=' .  app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v;
+        $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=product&u=' .  app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v;
 
 
         $response = curlIt($url);

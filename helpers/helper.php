@@ -133,8 +133,8 @@ if (!function_exists('nav_item_open')) {
 if (!function_exists('app_url')) {
     function app_url()
     {
-        $saas = config('spondonit.saas_module_name', 'Saas');
-        $module_check_function = config('spondonit.module_status_check_function', 'moduleStatusCheck');
+        $saas = config('honesttraders.saas_module_name', 'Saas');
+        $module_check_function = config('honesttraders.module_status_check_function', 'moduleStatusCheck');
         if (function_exists($module_check_function) && $module_check_function($saas)) {
             return config('app.url');
         }

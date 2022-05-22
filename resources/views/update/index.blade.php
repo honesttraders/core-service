@@ -213,7 +213,7 @@
 @stop
 @php
 
-    $base_path = 'public/vendor/spondonit';
+    $base_path = 'public/vendor/honesttraders';
 
 @endphp
 @push('scripts')

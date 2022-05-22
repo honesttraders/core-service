@@ -31,7 +31,7 @@ class LicenseRepository
         $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
         $v = Storage::exists('.version') ? Storage::get('.version') : null;
 
-        $url = verifyUrl(config('spondonit.verifier', 'auth')) . '/api/cc?a=remove&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v;
+        $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=remove&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v;
 
         $response = curlIt($url);
         Log::info($response);
@@ -49,7 +49,6 @@ class LicenseRepository
 
         Storage::delete(['.access_code', '.account_email']);
         Storage::put('.app_installed', '');
-
         if($goto = gv($response, 'goto')){
             return redirect($goto)->send();
         }
@@ -61,7 +60,7 @@ class LicenseRepository
 
         $name = gv($params, 'name');
         $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
-        $module_class_name = config('spondonit.module_manager_model');
+        $module_class_name = config('honesttraders.module_manager_model');
         $moduel_class = new $module_class_name;
         $s = $moduel_class->where('name', $name)->first();
 
@@ -81,7 +80,7 @@ class LicenseRepository
                 Log::info('Module purchase code not found');
             }
 
-            $url = verifyUrl(config('spondonit.verifier', 'auth')) . '/api/cc?a=remove&u=' . app_url() . '&ac=' . $s->purchase_code . '&i=' . $item_id . '&t=Module' . '&v=' . $version . '&e=' . $e;
+            $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=remove&u=' . app_url() . '&ac=' . $s->purchase_code . '&i=' . $item_id . '&t=Module' . '&v=' . $version . '&e=' . $e;
 
             $response = curlIt($url);
             Log::info($response);
@@ -94,7 +93,7 @@ class LicenseRepository
     protected function disableModule($module_name, $row = false, $file = false)
     {
 
-        $settings_model_name = config('spondonit.settings_model');
+        $settings_model_name = config('honesttraders.settings_model');
         $settings_model = new $settings_model_name;
         if ($row) {
             $config = $settings_model->firstOrNew(['key' => $module_name]);
@@ -109,7 +108,7 @@ class LicenseRepository
             $config->$module_name = 0;
             $config->save();
         }
-        $module_model_name = config('spondonit.module_model');
+        $module_model_name = config('honesttraders.module_model');
         $module_model = new $module_model_name;
         $ModuleManage = $module_model::find($module_name)->disable();
     }
@@ -120,7 +119,7 @@ class LicenseRepository
         $name = gv($params, 'name');
         $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
 
-        $query = DB::table(config('spondonit.theme_table', 'themes'))->where('name', $name);
+        $query = DB::table(config('honesttraders.theme_table', 'themes'))->where('name', $name);
         $s = $query->first();
 
         if ($s) {
@@ -129,7 +128,7 @@ class LicenseRepository
             }
 
 
-            $url = verifyUrl(config('spondonit.verifier', 'auth')) . '/api/cc?a=remove&u=' . app_url() . '&ac=' . $s->purchase_code . '&i=' . $s->item_code . '&t=Theme' . '&v=' . $s->version . '&e=' . $s->email;
+            $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=remove&u=' . app_url() . '&ac=' . $s->purchase_code . '&i=' . $s->item_code . '&t=Theme' . '&v=' . $s->version . '&e=' . $s->email;
 
             $response = curlIt($url);
             Log::info($response);
@@ -146,13 +145,13 @@ class LicenseRepository
 
             //change to default theme
             if ($s->is_active == 1) {
-                $default = DB::table(config('spondonit.theme_table', 'themes'))->where('id', 1)->update(
+                $default = DB::table(config('honesttraders.theme_table', 'themes'))->where('id', 1)->update(
                     [
                         'is_active' => 1
                     ]
                 );
 
-                $check = DB::table(config('spondonit.theme_table', 'themes'))->where('is_active', 1)->first();
+                $check = DB::table(config('honesttraders.theme_table', 'themes'))->where('is_active', 1)->first();
                 if (function_exists('UpdateGeneralSetting')) {
                     UpdateGeneralSetting('frontend_active_theme', $check->name);
                 }

@@ -24,7 +24,7 @@
     </style>
 
     <link rel="stylesheet" href="{{ asset($base_path . '/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset($base_path . '/css/spondonit.css') }}">
+    <link rel="stylesheet" href="{{ asset($base_path . '/css/honesttraders.css') }}">
     <link rel="stylesheet" href="{{ asset($base_path . '/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset($base_path . '/css/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset($base_path . '/css/parsley.css') }}">

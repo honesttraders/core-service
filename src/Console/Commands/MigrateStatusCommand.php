@@ -12,7 +12,7 @@ class MigrateStatusCommand extends BaseCommand
      *
      * @var string
      */
-    protected $signature = 'spondonit:migrate-status';
+    protected $signature = 'honesttraders:migrate-status';
 
     /**
      * The console command description.

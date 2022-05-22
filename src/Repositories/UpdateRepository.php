@@ -45,7 +45,7 @@ class UpdateRepository
         $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
         $v = Storage::exists('.version') ? Storage::get('.version') : null;
 
-        $url = verifyUrl(config('spondonit.verifier', 'auth')).'/api/cc?a=download&u='. url('/') .'&ac='.$ac.'&i='.config('app.item').'&e='.$e.'&c='.$c.'&v='.$v;
+        $url = verifyUrl(config('honesttraders.verifier', 'auth')).'/api/cc?a=download&u='. url('/') .'&ac='.$ac.'&i='.config('app.item').'&e='.$e.'&c='.$c.'&v='.$v;
 
 
         $zipFile = $build;
@@ -145,7 +145,7 @@ class UpdateRepository
             Artisan::call('migrate', array('--force' => true));
         } catch (Throwable $e) {
             Log::info($e->getMessage());
-            $sql = base_path('database/' . config('spondonit.database_file'));
+            $sql = base_path('database/' . config('honesttraders.database_file'));
             if (File::exists($sql)) {
                 DB::unprepared(file_get_contents($sql));
             }
