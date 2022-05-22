@@ -12,12 +12,12 @@
     <title>{{ isset($title) ? $title .' | '. config('app.name') :  config('app.name') }}</title>
 
     <style>
-        :root{
-            --background_color: #EEF6FF;
+          :root{
+            --background_color: #001f42;
             --header_background_color: #2B8ABE;
             --gradiant_color1: #2b8abe;
-            --gradiant_color2: #303895;
-            --gradiant_color3: #594e93;
+            --gradiant_color2: #389530;
+            --gradiant_color3: #4e936d;
         }
     </style>
     <link rel="shortcut icon" href="{{ asset($base_path . '/img/favicon.png') }}"/>
