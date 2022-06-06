@@ -169,3 +169,37 @@ p {
     margin-bottom: 20px;
     color: #687083;
 }
+.system_req_err{
+    background-color: #FFF5F7 !important;
+}
+.system_req_err_msg{
+    color: #EE3862 !important;
+}
+.parsley-errors-list{
+    color: #EE3862 !important;
+    text-decoration: none !important;
+}
+.parsley-required{
+        text-decoration: none;
+        list-style: none !important;
+        margin-left: -30px;
+        font-size: 12px;
+        /* letter-spacing: 1px; */
+        /* text-transform: capitalize; */
+        font-family: monospace;
+        font-weight: 700;
+        padding-top: 5px;
+}
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    z-index: 100001;
+    justify-content: center;
+    backface-visibility: hidden;
+    background: #ffffffba;
+}
