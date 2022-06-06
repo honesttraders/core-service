@@ -2,63 +2,34 @@
 <html lang="en">
 
 <head>
-    @php
-        $base_path = 'public/vendor/honesttraders';
-    @endphp
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ isset($title) ? $title .' | '. config('app.name') :  config('app.name') }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
-    <style>
-          :root{
-            --background_color: #001f42;
-            --header_background_color: #2B8ABE;
-            --gradiant_color1: #2b8abe;
-            --gradiant_color2: #389530;
-            --gradiant_color3: #4e936d;
-        }
-    </style>
-    <link rel="shortcut icon" href="{{ asset($base_path . '/img/favicon.png') }}"/>
-
-    <link rel="stylesheet" href="{{ asset($base_path . '/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset($base_path . '/css/honesttraders.css') }}">
-    <link rel="stylesheet" href="{{ asset($base_path . '/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset($base_path . '/css/toastr.min.css') }}">
-    <link rel="stylesheet" href="{{ asset($base_path . '/css/parsley.css') }}">
-
-    @stack('css')
-
-
+    @php
+    $base_path = 'public/vendor/honesttraders';
+    @endphp
+    <input type="hidden" id="base_path" value="{{ asset($base_path) }}">
+    <link rel="stylesheet" href="{{ asset($base_path . '/css/style.css') }}" />
+    
 </head>
 
-<body class="admin">
+<body>
     <div class="preloader">
         <div class="loader_img">
             <img src="{{ asset($base_path . '/loader.gif') }}" alt="loading..." height="64" width="64">
             <h2>Please Wait</h2>
         </div>
     </div>
-    <div class="container">
-        <div class="col-md-8 offset-2  mt-40">
-            <ul id="progressbar">
-                <li class="{{ active_progress_bar(['service.install', 'service.preRequisite','service.license',  'service.database', 'service.user', 'service.done']) }}">{{ __('service::install.welcome') }}</li>
-                <li class="{{ active_progress_bar(['service.preRequisite','service.license',  'service.database', 'service.user', 'service.done']) }} {{ active_link('service.license') }}">{{ __('service::install.environment') }}</li>
-                <li class="{{ active_progress_bar(['service.license',  'service.database', 'service.user', 'service.done']) }}">{{ __('service::install.license') }}</li>
-                <li class="{{ active_progress_bar([ 'service.database', 'service.user', 'service.done']) }}">{{ __('service::install.database') }}</li>
-                <li class="{{ active_progress_bar([ 'service.user', 'service.done']) }}">{{ __('service::install.admin_setup') }}</li>
-                <li class="{{ active_progress_bar([ 'service.done']) }}">{{ __('service::install.done') }}</li>
-
-            </ul>
-            <div class="card" id="content">
-                @section('content')
-
-                @show
-            </div>
-        </div>
+    <div class="row installer-container">
+       @yield('content')
     </div>
-
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+    {{-- <script src="{{ asset($base_path . '/') }}/js/index.js"></script> --}}
     <script type="text/javascript" src="{{ asset($base_path . '/js/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset($base_path . '/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset($base_path . '/js/toastr.min.js') }}"></script>
@@ -72,7 +43,6 @@
     </script>
     @endif
     @stack('js')
-
 </body>
 
 </html>
