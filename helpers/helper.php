@@ -178,7 +178,7 @@ function moduleVerify($file, $type = null)
     $params = [
         'name' => $filename,
         'item_id' => config('app.item'),
-        'envatouser' => Storage::exists('.account_email') ? Storage::get('.account_email') : null,
+        'envatouser' => Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null,
         'tariq' => true,
     ];
 

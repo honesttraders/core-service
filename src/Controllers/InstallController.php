@@ -31,7 +31,7 @@ class InstallController extends Controller{
 
     public function preRequisite(){
 
-        $ac = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
+        $ac = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
         if($ac){
             abort(404);
         }
@@ -53,7 +53,7 @@ class InstallController extends Controller{
             return redirect()->route('service.preRequisite')->with(['message' => __('service::install.requirement_failed'), 'status' => 'error']);
         }
 
-        $ac = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
+        $ac = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
         if($ac){
             abort(404);
         }
@@ -74,9 +74,9 @@ class InstallController extends Controller{
             $goto = route('service.database');
             $message = __('service::install.valid_license');
             if (request('re_install') && $this->repo->checkReinstall()){
-                Storage::put('.app_installed', Storage::get('.temp_app_installed'));
-                Storage::delete('.temp_app_installed');
-                Storage::put('.install_count', Storage::get('.install_count') + 1);
+                Storage::disk('local')->put('.app_installed', Storage::disk('local')->get('.temp_app_installed'));
+                Storage::disk('local')->delete('.temp_app_installed');
+                Storage::disk('local')->put('.install_count', Storage::disk('local')->get('.install_count') + 1);
                 $goto = url('/');
                 $message = __('service::install.re_installation_process_complete');
             }
@@ -87,7 +87,7 @@ class InstallController extends Controller{
 
     public function database(){
 
-        $ac = Storage::exists('.temp_app_installed') ? Storage::get('.temp_app_installed') : null;
+        $ac = Storage::disk('local')->exists('.temp_app_installed') ? Storage::disk('local')->get('.temp_app_installed') : null;
         if(!$ac){
             abort(404);
         }
@@ -105,13 +105,13 @@ class InstallController extends Controller{
 
     public function done(){
 
-        $data['user'] = Storage::exists('.user_email') ? Storage::get('.user_email') : null;
-        $data['pass'] = Storage::exists('.user_pass') ? Storage::get('.user_pass') : null;
+        $data['user'] = Storage::disk('local')->exists('.user_email') ? Storage::disk('local')->get('.user_email') : null;
+        $data['pass'] = Storage::disk('local')->exists('.user_pass') ? Storage::disk('local')->get('.user_pass') : null;
 
         if($data['user'] and $data['pass']){
             Log::info('done');
-            Storage::delete(['.user_email', '.user_pass']);
-            Storage::put('.install_count', 1);
+            Storage::disk('local')->delete(['.user_email', '.user_pass']);
+            Storage::disk('local')->put('.install_count', 1);
             return view('service::install.done', $data);
         } else{
             abort(404);

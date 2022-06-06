@@ -34,10 +34,10 @@ class CheckController extends Controller
 
             if(gv($params, 'a') == 'verify'){
                 Log::info('Initial License Verification failed. Message: '. gv($response, 'message'));
-                Storage::delete(['.access_code', '.account_email']);
-                Storage::deleteDirectory(config('app.item'));
-                Storage::put('.app_installed', '');
-                Storage::put('.logout', 'true');
+                Storage::disk('local')->delete(['.access_code', '.account_email']);
+                Storage::disk('local')->deleteDirectory(config('app.item'));
+                Storage::disk('local')->put('.app_installed', '');
+                Storage::disk('local')->put('.logout', 'true');
                 Auth::logout();
                 $goto = route('service.install');
                 if (gv($requests, 'from') == 'browser') {
@@ -57,7 +57,7 @@ class CheckController extends Controller
             \Log::error($e);
             $goto = route('service.install');
             if(gv($params, 'a') == 'verify'){
-                Storage::put('.access_log', date('Y-m-d'));
+                Storage::disk('local')->put('.access_log', date('Y-m-d'));
                 $goto = gv($params, 'current', route('dashboard'));
             }
 
@@ -81,22 +81,22 @@ class CheckController extends Controller
             $license_code = $response['license_code'] ?? null;
 
             if (gbv($params, 'ri')) {
-                Storage::put('.app_installed', $checksum);
-                Storage::put('.install_count', Storage::get('.install_count') + 1);
+                Storage::disk('local')->put('.app_installed', $checksum);
+                Storage::disk('local')->put('.install_count', Storage::disk('local')->get('.install_count') + 1);
                 $goto = url('/');
                 $message = __('service::install.re_installation_process_complete');
             } else {
-                Storage::put('.temp_app_installed', $checksum ?? '');
+                Storage::disk('local')->put('.temp_app_installed', $checksum ?? '');
                 $goto = route('service.database');
                 $message = gv($response, 'message', __('service::install.valid_license'));
             }
 
-            Storage::put('.access_code', $license_code ?? '');
-            Storage::put('.account_email', gv($params, 'e'));
-            Storage::put('.access_log', date('Y-m-d'));
+            Storage::disk('local')->put('.access_code', $license_code ?? '');
+            Storage::disk('local')->put('.account_email', gv($params, 'e'));
+            Storage::disk('local')->put('.access_log', date('Y-m-d'));
             Toastr::success($message);
         } elseif (gv($params, 'a') == 'verify') {
-            Storage::put('.access_log', date('Y-m-d'));
+            Storage::disk('local')->put('.access_log', date('Y-m-d'));
             $goto = gv($params, 'current', route('dashboard'));
         }
 

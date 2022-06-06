@@ -26,10 +26,10 @@ class LicenseRepository
     public function revoke()
     {
 
-        $ac = Storage::exists('.access_code') ? Storage::get('.access_code') : null;
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
-        $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
-        $v = Storage::exists('.version') ? Storage::get('.version') : null;
+        $ac = Storage::disk('local')->exists('.access_code') ? Storage::disk('local')->get('.access_code') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
+        $c = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
+        $v = Storage::disk('local')->exists('.version') ? Storage::disk('local')->get('.version') : null;
 
         $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=remove&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v;
 
@@ -47,8 +47,8 @@ class LicenseRepository
             'DB_PASSWORD' => "",
         ]);
 
-        Storage::delete(['.access_code', '.account_email']);
-        Storage::put('.app_installed', '');
+        Storage::disk('local')->delete(['.access_code', '.account_email']);
+        Storage::disk('local')->put('.app_installed', '');
         if($goto = gv($response, 'goto')){
             return redirect($goto)->send();
         }
@@ -59,7 +59,7 @@ class LicenseRepository
     {
 
         $name = gv($params, 'name');
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
         $module_class_name = config('honesttraders.module_manager_model');
         $moduel_class = new $module_class_name;
         $s = $moduel_class->where('name', $name)->first();
@@ -117,7 +117,7 @@ class LicenseRepository
     {
 
         $name = gv($params, 'name');
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
 
         $query = DB::table(config('honesttraders.theme_table', 'themes'))->where('name', $name);
         $s = $query->first();

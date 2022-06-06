@@ -21,7 +21,7 @@ class LicenseController extends Controller{
 
     public function revoke(){
 
-        $ac = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
+        $ac = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
         if(!$ac){
             return redirect()->route('service.install');
         }
@@ -36,7 +36,7 @@ class LicenseController extends Controller{
 
     public function revokeModule(Request $request){
 
-        $ac = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
+        $ac = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
         if(!$ac){
             return redirect()->route('service.install');
         }
@@ -52,7 +52,7 @@ class LicenseController extends Controller{
 
     public function revokeTheme(Request $request){
 
-        $ac = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
+        $ac = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
         if(!$ac){
             return redirect()->route('service.install');
         }

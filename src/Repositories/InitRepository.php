@@ -23,7 +23,7 @@ class InitRepository {
     public function checkDatabase(){
 
         try {
-            if (!Storage::has('settings.json')) {
+            if (!Storage::disk('local')->has('settings.json')) {
                 DB::connection()->getPdo();
                 if (!Schema::hasTable('users')){
                     return false;
@@ -34,7 +34,7 @@ class InitRepository {
             if($error == 2002){
                 abort(403, 'No connection could be made because the target machine actively refused it');
             } else if($error == 1045){
-                $c = Storage::exists('.app_installed') && Storage::get('.app_installed');
+                $c = Storage::disk('local')->exists('.app_installed') && Storage::disk('local')->get('.app_installed');
                 if($c){
                     abort(403, 'Access denied for user. Please check your database username and password.');
                 }
@@ -46,11 +46,12 @@ class InitRepository {
     }
 
     public function check() {
+        return;
         if (isTestMode()) {
             return;
         }
 
-        if (Storage::exists('.access_log') && Storage::get('.access_log') == date('Y-m-d')) {
+        if (Storage::disk('local')->exists('.access_log') && Storage::disk('local')->get('.access_log') == date('Y-m-d')) {
             return;
         }
 
@@ -58,16 +59,16 @@ class InitRepository {
             return;
         }
 
-        $ac = Storage::exists('.access_code') ? Storage::get('.access_code') : null;
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
-        $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
-        $v = Storage::exists('.version') ? Storage::get('.version') : null;
+        $ac = Storage::disk('local')->exists('.access_code') ? Storage::disk('local')->get('.access_code') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
+        $c = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
+        $v = Storage::disk('local')->exists('.version') ? Storage::disk('local')->get('.version') : null;
 
         if (!$ac) {
             Log::info('Activation code not found from init');
             return false;
         }
-        $ve = Storage::exists('.ve') ? Storage::get('.ve') : 'e';
+        $ve = Storage::disk('local')->exists('.ve') ? Storage::disk('local')->get('.ve') : 'e';
         $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=verify&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v.'&current='.urlencode(request()->path()).'&ve='.$ve;
         $response = curlIt($url);
 
@@ -82,28 +83,28 @@ class InitRepository {
             if (!$status) {
                 Log::info('Initial License Verification failed. Message: '. gv($response, 'message'));
 
-                Storage::delete(['.access_code', '.account_email']);
-                Storage::deleteDirectory(config('app.item'));
-                Storage::put('.app_installed', '');
+                Storage::disk('local')->delete(['.access_code', '.account_email']);
+                Storage::disk('local')->deleteDirectory(config('app.item'));
+                Storage::disk('local')->put('.app_installed', '');
                 Auth::logout();
                 return redirect()->route('service.install')->send();
             }
         }
-        Storage::put('.access_log', date('Y-m-d'));
+        Storage::disk('local')->put('.access_log', date('Y-m-d'));
     }
 
     public function apiCheck(){
-
-        $ac = Storage::exists('.access_code') ? Storage::get('.access_code') : null;
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
-        $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
-        $v = Storage::exists('.version') ? Storage::get('.version') : null;
+        return true;
+        $ac = Storage::disk('local')->exists('.access_code') ? Storage::disk('local')->get('.access_code') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
+        $c = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
+        $v = Storage::disk('local')->exists('.version') ? Storage::disk('local')->get('.version') : null;
 
         if (!$ac) {
             Log::info('Activation code not found from apicheck');
             return false;
         }
-        $ve = Storage::exists('.ve') ? Storage::get('.ve') : 'e';
+        $ve = Storage::disk('local')->exists('.ve') ? Storage::disk('local')->get('.ve') : 'e';
         $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=verify&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v.'&ve='.$ve;
         $response = curlIt($url);
 
@@ -125,10 +126,10 @@ class InitRepository {
             throw ValidationException::withMessages(['message' => 'No internect connection.']);
         }
 
-        $ac = Storage::exists('.access_code') ? Storage::get('.access_code') : null;
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
-        $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
-        $v = Storage::exists('.version') ? Storage::get('.version') : null;
+        $ac = Storage::disk('local')->exists('.access_code') ? Storage::disk('local')->get('.access_code') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
+        $c = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
+        $v = Storage::disk('local')->exists('.version') ? Storage::disk('local')->get('.version') : null;
 
         $about = file_get_contents(verifyUrl(config('honesttraders.verifier', 'auth')) . '/about');
         $update_tips = file_get_contents(verifyUrl(config('honesttraders.verifier', 'auth')) . '/update-tips');

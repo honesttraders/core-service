@@ -26,10 +26,10 @@ class ServiceMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $logout = Storage::exists('.logout') && Storage::get('.logout');
+        $logout = Storage::disk('local')->exists('.logout') && Storage::disk('local')->get('.logout');
         if ($logout) {
             $request->session()->flush();
-            Storage::delete('.logout');
+            Storage::disk('local')->delete('.logout');
             return redirect('/install');
         }
 

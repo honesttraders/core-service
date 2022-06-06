@@ -40,10 +40,10 @@ class UpdateRepository
             throw ValidationException::withMessages(['message' => trans('service::install.missing_update_file')]);
         }
 
-        $ac = Storage::exists('.access_code') ? Storage::get('.access_code') : null;
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
-        $c = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
-        $v = Storage::exists('.version') ? Storage::get('.version') : null;
+        $ac = Storage::disk('local')->exists('.access_code') ? Storage::disk('local')->get('.access_code') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
+        $c = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
+        $v = Storage::disk('local')->exists('.version') ? Storage::disk('local')->get('.version') : null;
 
         $url = verifyUrl(config('honesttraders.verifier', 'auth')).'/api/cc?a=download&u='. url('/') .'&ac='.$ac.'&i='.config('app.item').'&e='.$e.'&c='.$c.'&v='.$v;
 
@@ -89,7 +89,7 @@ class UpdateRepository
 
         $this->migrateDB();
 
-        Storage::put('.version', $version);
+        Storage::disk('local')->put('.version', $version);
         unlink($build);
 
         return ['message' => 'Product Updated Successfully'];
@@ -133,7 +133,7 @@ class UpdateRepository
 
         $this->migrateDB();
 
-        Storage::put('.version', $version);
+        Storage::disk('local')->put('.version', $version);
         unlink($build);
     }
 

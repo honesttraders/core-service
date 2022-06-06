@@ -29,7 +29,7 @@ class InstallRepository
 
     public function checkInstallation()
     {
-        $ac = Storage::exists('.app_installed') ? Storage::get('.app_installed') : null;
+        $ac = Storage::disk('local')->exists('.app_installed') ? Storage::disk('local')->get('.app_installed') : null;
         if ($ac) {
             abort(404);
         } else {
@@ -68,7 +68,7 @@ class InstallRepository
     {
         try {
             DB::connection()->getPdo();
-            return (Storage::exists('.install_count') ? Storage::get('.install_count') : 0) and (Artisan::call('honesttraders:migrate-status'));
+            return (Storage::disk('local')->exists('.install_count') ? Storage::disk('local')->get('.install_count') : 0) and (Artisan::call('honesttraders:migrate-status'));
         } catch (Exception $e) {
             return false;
         }
@@ -193,7 +193,7 @@ class InstallRepository
         if (!isConnected()) {
             throw ValidationException::withMessages(['message' => 'No internect connection.']);
         }
-        // $ve = Storage::exists('.ve') ? Storage::get('.ve') : 'e';
+        // $ve = Storage::disk('local')->exists('.ve') ? Storage::disk('local')->get('.ve') : 'e';
         // $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=install&u=' . app_url() . '&ac=' . request('access_code') . '&i=' . config('app.item') . '&e=' . request('envato_email') . '&ri=' . request('re_install') . '&current=' . urlencode(request()->path()) . '&ve=' . $ve;
 
         // $response = curlIt($url);
@@ -218,10 +218,10 @@ class InstallRepository
         $checksum = 'eyJpdiI6Im9oMWU5Z0NoSGVwVzdmQlphaVBvd1E9PSIsInZhbHVlIjoiUURhZmpubkNBUVB6b0ZPck1v';
         $license_code = '5458-5365-8845-7865';
 
-        Storage::put('.temp_app_installed', $checksum ?? '');
-        Storage::put('.access_code', $license_code ?? '');
-        Storage::put('.account_email', request('envato_email'));
-        Storage::put('.access_log', date('Y-m-d'));
+        Storage::disk('local')->put('.temp_app_installed', $checksum ?? '');
+        Storage::disk('local')->put('.access_code', $license_code ?? '');
+        Storage::disk('local')->put('.account_email', request('envato_email'));
+        Storage::disk('local')->put('.access_log', date('Y-m-d'));
 
         $folder = storage_path('app' . DIRECTORY_SEPARATOR . config('app.item'));
         File::ensureDirectoryExists($folder);
@@ -245,10 +245,10 @@ class InstallRepository
             throw ValidationException::withMessages(['message' => 'No internect connection.']);
         }
 
-        $ac = Storage::exists('.access_code') ? Storage::get('.access_code') : null;
-        $e = Storage::exists('.account_email') ? Storage::get('.account_email') : null;
-        $c = Storage::exists('.temp_app_installed') ? Storage::get('.temp_app_installed') : null;
-        $v = Storage::exists('.version') ? Storage::get('.version') : null;
+        $ac = Storage::disk('local')->exists('.access_code') ? Storage::disk('local')->get('.access_code') : null;
+        $e = Storage::disk('local')->exists('.account_email') ? Storage::disk('local')->get('.account_email') : null;
+        $c = Storage::disk('local')->exists('.temp_app_installed') ? Storage::disk('local')->get('.temp_app_installed') : null;
+        $v = Storage::disk('local')->exists('.version') ? Storage::disk('local')->get('.version') : null;
 
 
         $url = verifyUrl(config('honesttraders.verifier', 'auth')) . '/api/cc?a=verify&u=' . app_url() . '&ac=' . $ac . '&i=' . config('app.item') . '&e=' . $e . '&c=' . $c . '&v=' . $v . '&current=' . urlencode(request()->path());
@@ -261,12 +261,12 @@ class InstallRepository
 
         if (!$status) {
             Log::info('License Verification failed');
-            Storage::delete(['.access_code', '.account_email']);
-            Storage::deleteDirectory(config('app.item'));
-            Storage::put('.temp_app_installed', '');
+            Storage::disk('local')->delete(['.access_code', '.account_email']);
+            Storage::disk('local')->deleteDirectory(config('app.item'));
+            Storage::disk('local')->put('.temp_app_installed', '');
             return false;
         } else {
-            Storage::put('.access_log', date('Y-m-d'));
+            Storage::disk('local')->put('.access_log', date('Y-m-d'));
             return true;
         }
     }
@@ -281,12 +281,12 @@ class InstallRepository
         try {
             $this->migrateDB();
 
-            $ac = Storage::exists('.temp_app_installed') ? Storage::get('.temp_app_installed') : null;
-            Storage::put('.app_installed', config('app.signature'));
-            Storage::put('.user_email', gv($params, 'email'));
-            Storage::put('.user_pass', gv($params, 'password'));
+            $ac = Storage::disk('local')->exists('.temp_app_installed') ? Storage::disk('local')->get('.temp_app_installed') : null;
+            Storage::disk('local')->put('.app_installed', config('app.signature'));
+            Storage::disk('local')->put('.user_email', gv($params, 'email'));
+            Storage::disk('local')->put('.user_pass', gv($params, 'password'));
 
-            Storage::delete('.temp_app_installed');
+            Storage::disk('local')->delete('.temp_app_installed');
         } catch (\Throwable $th) {
             Log::alert("message", $th->getMessage());
             return response()->json(['message' => $th->getMessage()], 200);
@@ -520,10 +520,10 @@ class InstallRepository
                 'DB_PASSWORD' => "",
             ]);
 
-            Storage::delete(['.access_code', '.account_email']);
-            Storage::put('.app_installed', '');
+            Storage::disk('local')->delete(['.access_code', '.account_email']);
+            Storage::disk('local')->put('.app_installed', '');
             Artisan::call('optimize:clear');
-            Storage::put('.logout', true);
+            Storage::disk('local')->put('.logout', true);
         }
         return $response;
     }
