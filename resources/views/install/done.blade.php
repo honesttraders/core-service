@@ -64,7 +64,7 @@ $base_path = 'public/vendor/honesttraders';
             <div class="d-flex align-items-center gap-3">
                 <div
                     class="p-3 border step-with-border completed rounded-circle d-flex flex-column justify-content-center align-items-center image-icon tab-button">
-                    <img src="{{ asset($base_path . '/') }}/images/Icon/admin.svg" alt="" />
+                    <img src="{{ asset($base_path . '/') }}/images/check-mark.svg" alt="" />
                 </div>
                 <div class="ps-2">
                     <p>05.</p>
@@ -90,12 +90,12 @@ $base_path = 'public/vendor/honesttraders';
 <!-- from section -->
 <div class="col-8 from-section">
     <div class="padding-left-top">
-        <div class="bg-white content-section-width rounded" step-count="6">
+        <div class="bg-white w-75 rounded" step-count="6">
             <div class="text-title p-3 text-center text-white">
                 <h3>{{ __('service::install.welcome_title') }}</h3>
             </div>
             <div class="px-5 py-4 d-flex flex-column justify-content-center align-items-center gap-3 content-body">
-                <img src="images/complete-installation.png" alt="" />
+                <img src="{{ asset($base_path . '/') }}/images/complete-installation.png" alt="" />
                 <p class="text-center pb-3">
                     Congratulations! You successfully installed HRM. Login to use
                     our servises.

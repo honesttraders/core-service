@@ -122,7 +122,7 @@ $base_path = 'public/vendor/honesttraders';
                     <input type="password" class="form-control" name="db_password" id="db_password" placeholder="{{ __('service::install.db_password') }}" value="{{ env('DB_PASSWORD') }}">
 
                 </div>
-                <div class="px-5 pb-4 d-flex align-items-center gap-3">
+                <div class="px-5 pb-4 d-flex align-items-center gap-2">
                     <input class="form-check-input" type="checkbox" name="force_migrate" id="flexRadioDefault2"  />
                     <label class="form-check-label" for="flexRadioDefault2">
                         {{ __('Force Delete Previous Table') }}

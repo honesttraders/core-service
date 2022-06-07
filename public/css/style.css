@@ -32,12 +32,15 @@ input{
 }
 
 .form-check-input{
-    width: 35px;
-    max-width: 35px;
-    min-width: 35px;
-    height: 35px;
-    max-height: 35px;
-    min-height: 35px;
+    width: 20px;
+    max-width: 20px;
+    min-width: 20px;
+    height: 20px;
+    max-height: 20px;
+    min-height: 20px;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    border: 1px solid rgb(199 199 199) !important;
 }
 
 .form-check-input:checked{
@@ -169,6 +172,8 @@ p {
     margin-bottom: 20px;
     color: #687083;
 }
+
+/* Laravel Developer Start  */
 .system_req_err{
     background-color: #FFF5F7 !important;
 }
@@ -211,3 +216,15 @@ p {
     margin: -25px 0 0 -25px;
     text-align: center
 }
+.text-title h3{
+    font-weight: 600;
+    font-size: 22px !important;
+    margin-bottom: 0;
+    padding: 12px 0 !important;
+}
+/* element.style {
+    font-weight: 600;
+    font-size: 22px !important;
+    margin-bottom: 0;
+    padding: 14px 0 !important;
+} */
