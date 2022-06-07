@@ -21,7 +21,7 @@
 <body>
     <div class="preloader">
         <div class="loader_img">
-            <img src="{{ asset($base_path . '/loader.gif') }}" alt="loading..." height="64" width="64">
+            <img src="{{ asset($base_path . '/loader.gif') }}" alt="loading..." height="200" width="200">
             <h2>Please Wait</h2>
         </div>
     </div>
