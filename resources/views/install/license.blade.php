@@ -137,7 +137,7 @@ $base_path = 'public/vendor/honesttraders';
         _formValidation('content_form');
         $(document).ready(function(){
             setTimeout(function(){
-                $('.preloader h2').text('We are validating your license. Please do not refresh or close the browser')
+                $('.preloader h2').text('The license validation process is in progress. Please don\'t refresh or close the browser')
             }, 2000);
         })
     </script>
