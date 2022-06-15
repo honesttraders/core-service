@@ -30,7 +30,7 @@ return array(
 "folder_permissions" => "Folder Permissions",
 "get_access_code" => "Get Access Code",
 "get_started" => "Get Started",
-"goto_home" => "Goto Home",
+"goto_home" => "Go to Home",
 "import_configuration_data" => "Import Configuration Data",
 "install" => "Install",
 "install_wizard" => "Install Wizard",
