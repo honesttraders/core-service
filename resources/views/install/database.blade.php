@@ -92,7 +92,7 @@ $base_path = 'public/vendor/honesttraders';
 <div class="col-8 from-section">
     <div class="padding-left-top">
 
-        <div class="bg-white content-section-width rounded" step-count="4">
+        <div class="bg-white w-75 rounded show-section tab-section" step-count="4">
             <div class="text-title p-3 text-center text-white">
                 <h3>{{ __('service::install.database_title') }}</h3>
             </div>
