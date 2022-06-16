@@ -105,7 +105,7 @@ $base_path = 'public/vendor/honesttraders';
                     Password : <b> {{ $pass }} </b>
                 </p>
                 <a href="{{ url('/') }}" class="btn color mb-3 btn-primary px-5 py-3 align-items-center">
-                    {{ __('service::install.goto_home') }} </a>
+                    {{ __('service::install.goto_home') }} »</a>
             </div>
         </div>
     </div>

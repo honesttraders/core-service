@@ -17,7 +17,7 @@
     </p>
 
     <a href="{{ url('/') }}" class="offset-3 col-sm-6 primary-btn fix-gr-bg mt-40 mb-20">
-        {{ __('service::install.goto_home') }} </a>
+        {{ __('service::install.goto_home') }} »</a>
 </div>
 
 @stop

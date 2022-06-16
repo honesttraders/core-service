@@ -94,7 +94,7 @@ $base_path = 'public/vendor/honesttraders';
     
         <div class="bg-white w-75 rounded" step-count="3">
             <div class="text-title p-3 text-center text-white">
-                <h3>Let's Check Your Enviroment For App</h3>
+                <h3>Verify Your Purchase</h3>
             </div>
             <form class="pb-3" data-parsley-validate method="post" action="{{ route('service.license') }}" id="content_form">
                 <div class="mb-3 px-5 pt-5">

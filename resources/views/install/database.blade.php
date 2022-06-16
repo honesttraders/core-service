@@ -131,8 +131,8 @@ $base_path = 'public/vendor/honesttraders';
 
                 <div class="px-5 pb-4 d-flex flex-column justify-content-center align-items-start gap-3">
 
-                    <button type="submit" class="btn color btn-primary px-5 py-3 align-items-start follow-next-step submit" >{{ __('service::install.lets_go_next') }}</button>
-                   <button type="button" class="btn color btn-primary px-5 py-3 align-items-start follow-next-step submitting" disabled style="display:none">{{ __('service::install.submitting') }}</button>
+                    <button type="submit" class="btn color btn-primary px-5 py-3 align-items-start follow-next-step submit" >{{ __('service::install.lets_go_next') }} »</button>
+                   <button type="button" class="btn color btn-primary px-5 py-3 align-items-start follow-next-step submitting" disabled style="display:none">{{ __('service::install.submitting') }} »</button>
                 </div>
             </form>
         </div>
