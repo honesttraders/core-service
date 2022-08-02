@@ -143,7 +143,7 @@ $base_path = 'public/vendor/honesttraders';
                 @else
                 <div class="py-3 rounded text-center px-5 btn-with-opacity">
                     <p class="px-5 all-the">
-                        <b>{{ __("All the Requirements look's Fine. Let's Dig in") }}</b>
+                        <b>{{ __("All the Requirements look's Fine. Let;s Dig in") }}</b>
                     </p>
                 </div>
                 <a href="{{ route('service.license') }}" class="btn mb-3 color btn-primary px-5 py-3 align-items-center follow-next-step">

@@ -94,7 +94,7 @@ $base_path = 'public/vendor/honesttraders';
     
         <div class="bg-white w-75 rounded" step-count="3">
             <div class="text-title p-3 text-center text-white">
-                <h3>Verify Your Purchase</h3>
+                <h3>Let's Check Your Enviroment For App</h3>
             </div>
             <form class="pb-3" data-parsley-validate method="post" action="{{ route('service.license') }}" id="content_form">
                 <div class="mb-3 px-5 pt-5">
@@ -137,7 +137,7 @@ $base_path = 'public/vendor/honesttraders';
         _formValidation('content_form');
         $(document).ready(function(){
             setTimeout(function(){
-                $('.preloader h2').text('The license validation process is in progress. Please don\'t refresh or close the browser')
+                $('.preloader h2').text('We are validating your license. Please do not refresh or close the browser')
             }, 2000);
         })
     </script>
